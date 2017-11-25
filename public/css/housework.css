@@ -1,0 +1,19 @@
+table {
+	border-collapse: collapse;
+}
+
+td {
+	border: thin black solid;
+}
+
+.date-overdue {
+	color: #900;
+}
+
+.date-current {
+	color: #090;
+}
+
+.date-future {
+	color: #999;
+}

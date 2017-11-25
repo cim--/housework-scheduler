@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TaskController@index')->name('dashboard');
+Route::post('/{task}/complete', 'TaskController@complete')->name('complete');
+
+
