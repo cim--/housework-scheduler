@@ -18,7 +18,7 @@ class CreateTasktypesTable extends Migration
             $table->string('name');
             $table->integer('visibility')->unsigned()->nullable();
             $table->integer('scheduler_id')->index();
-            $table->string('schedule');
+            $table->string('schedule')->nullable();
             $table->timestamps();
         });
     }

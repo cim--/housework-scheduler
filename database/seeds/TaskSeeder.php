@@ -21,7 +21,8 @@ class TaskSeeder extends Seeder
             'Clean hob' => 'next Saturday',
             'Clean oven' => '2 weeks Saturday',
             'Put out rubbish' => 'Wednesday',
-            'Put out recycling' => '1 weeks Wednesday'
+            'Put out recycling' => '1 weeks Wednesday',
+            'Let electrician in' => '15 December'
         ];
 
         foreach ($tasks as $type => $start) {

@@ -20,7 +20,8 @@ class TasktypeSeeder extends Seeder
             ['INTERNAL', 28, 'Clean oven'],
             ['INTERNAL', 14, 'Clean hob'],
             ['EXTERNAL', 14, 'Put out recycling'],
-            ['EXTERNAL', 14, 'Put out rubbish']
+            ['EXTERNAL', 14, 'Put out rubbish'],
+            ['ONCE', null, 'Let electrician in']
         ];
 
         foreach ($types as $info) {
