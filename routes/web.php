@@ -13,5 +13,6 @@
 
 Route::get('/', 'TaskController@index')->name('dashboard');
 Route::post('/{task}/complete', 'TaskController@complete')->name('complete');
-
+Route::get('/new', 'TaskController@construct')->name('construct');
+Route::post('/new', 'TaskController@create')->name('create');
 

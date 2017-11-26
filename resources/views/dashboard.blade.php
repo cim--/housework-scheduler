@@ -5,6 +5,7 @@
 @section('content')
 <h1>Task list</h1>
 
+<p><a href="{{route('construct')}}">New task</a></p>
 <h2>Current tasks</h2>
 <table>
   <thead>
