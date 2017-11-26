@@ -20,11 +20,11 @@
 	<tr class='task'>
 	  <td class='name'>{{$task->tasktype->name}}</td>
 	  @if ($task->date->isToday())
-	  <td class='date date-current'>{{$task->date->format("j F")}}</td>
+	  <td class='date date-current'>{{$task->date->format("j F Y")}}</td>
 	  @elseif ($task->date->isPast())
-	  <td class='date date-overdue'>{{$task->date->format("j F")}}</td>
+	  <td class='date date-overdue'>{{$task->date->format("j F Y")}}</td>
 	  @else
-	  <td class='date date-future'>{{$task->date->format("j F")}}</td>
+	  <td class='date date-future'>{{$task->date->format("j F Y")}}</td>
 	  @endif
 	  <td class='completion'>
 		@if ($task->date->isFuture() && ($task->tasktype->visibility != 0 && $task->date->gte(new Carbon\Carbon("+".$task->tasktype->visibility." days"))))
