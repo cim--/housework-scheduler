@@ -40,6 +40,16 @@ class TaskController extends Controller
         ]);
     }
 
+    public function edit(Task $task)
+    {
+        $schedules = Scheduler::all();
+        return view('edit', [
+            'schedules' => $schedules,
+            'task' => $task
+        ]);
+    }
+
+    
     public function create(Request $request)
     {
         $tasktype = new Tasktype;
@@ -55,4 +65,19 @@ class TaskController extends Controller
         $first->save();
         return redirect()->route('dashboard');
     }
+
+    public function update(Request $request, Task $task)
+    {
+        $task->date = new Carbon($request->input('date'));
+        $task->save();
+        $tasktype = $task->tasktype;
+        $tasktype->schedule = $request->input('frequency');
+        $tasktype->scheduler_id = $request->input('schedule');
+        $tasktype->visibility = $request->input('visibility');
+        $tasktype->save();
+
+        return redirect()->route('dashboard');
+    }
+
+
 }

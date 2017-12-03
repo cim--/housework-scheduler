@@ -13,6 +13,7 @@
 	  <th>Task</th>
 	  <th>Date</th>
 	  <th>Complete</th>
+      <th>Edit</th>
 	</tr>
   </thead>
   <tbody>
@@ -35,6 +36,9 @@
 		  <button type='submit'>Done</button>
 		</form>
 		@endif
+	  </td>
+	  <td>
+		<a href='{{route('edit', $task->id)}}'>Edit</a>
 	  </td>
 	</tr>
 	@endforeach
