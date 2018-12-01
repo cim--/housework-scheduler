@@ -17,7 +17,16 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $active = Task::where('complete', false)->with('tasktype')->orderBy('date')->orderBy('name')->get();
+        $active = Task::where('complete', false)->with('tasktype')->orderBy('date')->get();
+        $active = $active->sort(function($a, $b) {
+            if ($a->date->lt($b->date)) {
+                return -1;
+            } elseif ($a->date->gt($b->date)) {
+                return 1;
+            } else {
+                return strcmp($a->tasktype->name, $b->tasktype->name);
+            }
+        });
         return view('dashboard', [
             'active' => $active
         ]);
