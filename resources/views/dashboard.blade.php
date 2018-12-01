@@ -24,6 +24,8 @@
 	  <td class='date date-current'>{{$task->date->format("j F Y")}}</td>
 	  @elseif ($task->date->isPast())
 	  <td class='date date-overdue'>{{$task->date->format("j F Y")}}</td>
+	  @elseif ($task->date->isTomorrow())
+	  <td class='date date-soon'>{{$task->date->format("j F Y")}}</td>
 	  @else
 	  <td class='date date-future'>{{$task->date->format("j F Y")}}</td>
 	  @endif

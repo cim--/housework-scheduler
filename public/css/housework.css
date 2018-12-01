@@ -18,3 +18,7 @@ td {
 .date-future {
 	color: #999;
 }
+
+.date-soon {
+    color: #009;
+}
