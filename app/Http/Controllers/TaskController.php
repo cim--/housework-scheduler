@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Task;
+use App\Item;
 use App\Tasktype;
 use App\Scheduler;
 use Illuminate\Http\Request;
@@ -27,8 +28,12 @@ class TaskController extends Controller
                 return strcmp($a->tasktype->name, $b->tasktype->name);
             }
         });
+
+        $items = Item::orderBy('item')->get();
+        
         return view('dashboard', [
-            'active' => $active
+            'active' => $active,
+            'items' => $items
         ]);
     }
 

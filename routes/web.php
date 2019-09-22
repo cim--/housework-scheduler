@@ -12,9 +12,11 @@
 */
 
 Route::get('/', 'TaskController@index')->name('dashboard');
-Route::post('/{task}/complete', 'TaskController@complete')->name('complete');
-Route::get('/{task}/edit', 'TaskController@edit')->name('edit');
-Route::post('/{task}/edit', 'TaskController@update')->name('update');
-Route::get('/new', 'TaskController@construct')->name('construct');
-Route::post('/new', 'TaskController@create')->name('create');
-
+Route::post('/task/{task}/complete', 'TaskController@complete')->name('task.complete');
+Route::get('/task/{task}/edit', 'TaskController@edit')->name('task.edit');
+Route::post('/task/{task}/edit', 'TaskController@update')->name('task.update');
+Route::get('/task/new', 'TaskController@construct')->name('task.construct');
+Route::post('/task/new', 'TaskController@create')->name('task.create');
+Route::get('/item/new', 'ItemController@create')->name('item.create');
+Route::post('/item/new', 'ItemController@store')->name('item.store');
+Route::post('/item/{item}/delete', 'ItemController@destroy')->name('item.destroy');

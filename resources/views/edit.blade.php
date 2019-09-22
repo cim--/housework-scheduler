@@ -6,7 +6,7 @@
 <h1>Edit Task: {{$task->tasktype->name}}</h1>
 <p><a href='{{route('dashboard')}}'>Back to list</a></p>
 
-<form action='{{route('update', $task->id)}}' method='post'>
+<form action='{{route('task.update', $task->id)}}' method='post'>
   <table>
 	<tr>
 	  <th>Repetition</th>

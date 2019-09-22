@@ -22,3 +22,13 @@ td {
 .date-soon {
     color: #009;
 }
+
+div.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.col {
+    padding-right: 1em;
+    border-right: thin #999 solid;
+}

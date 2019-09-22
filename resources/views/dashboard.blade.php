@@ -5,7 +5,9 @@
 @section('content')
 <h1>Task list</h1>
 
-<p><a href="{{route('construct')}}">New task</a></p>
+<div class='row'>
+  <div class='col'>
+<p><a href="{{route('task.construct')}}">New task</a></p>
 <h2>Current tasks</h2>
 <table>
   <thead>
@@ -33,17 +35,39 @@
 		@if ($task->date->isFuture() && ($task->tasktype->visibility != 0 && $task->date->gte(new Carbon\Carbon("+".$task->tasktype->visibility." days"))))
 		-
 		@else
-		<form action='{{route('complete', $task->id)}}' method='post'>
+		<form action='{{route('task.complete', $task->id)}}' method='post'>
 		  {{csrf_field()}}
 		  <button type='submit'>Done</button>
 		</form>
 		@endif
 	  </td>
 	  <td>
-		<a href='{{route('edit', $task->id)}}'>Edit</a>
+		<a href='{{route('task.edit', $task->id)}}'>Edit</a>
 	  </td>
 	</tr>
 	@endforeach
   </tbody>
 </table>
+  </div>
+  <div>
+    <p><a href="{{route('item.create')}}">New item</a></p>
+    <h2>Required items</h2>
+    <table>
+      <tr><th>Item</th><th>Done?</th></tr>
+      @foreach ($items as $item)
+      <tr>
+	<td>{{$item->item}}</td>
+	<td>
+	  <form action='{{route('item.destroy', $item->id)}}' method='post'>
+	    {{csrf_field()}}
+	    <button type='submit'>Done</button>
+	  </form>
+	</td>
+      </tr>
+      @endforeach
+    </table>
+  </div>
+</div>
+
+
 @stop

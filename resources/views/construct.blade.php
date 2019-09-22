@@ -6,7 +6,7 @@
 <h1>New Task</h1>
 <p><a href='{{route('dashboard')}}'>Back to list</a></p>
 
-<form action='{{route('create')}}' method='post'>
+<form action='{{route('task.create')}}' method='post'>
   <table>
 	<tr>
 	  <th>Name</th>
