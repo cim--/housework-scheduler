@@ -8,7 +8,11 @@ use Carbon\Carbon;
 
 class Task extends Model
 {
-    protected $dates = ['date', 'created_at', 'updated_at'];
+    protected $casts = [
+	'date' => 'date',
+	'created_at' => 'datetime',
+	'updated_at' => 'datetime'
+    ];
     
     public function tasktype()
     {
@@ -19,21 +23,29 @@ class Task extends Model
     public function reschedule()
     {
         switch ($this->tasktype->scheduler->code) {
-        case "ONCE":
-            return; // don't reschedule
-        case "INTERNAL":
-            $date = new Carbon();
-            $interval = $this->tasktype->schedule;
-            break;
-        case "EXTERNAL":
-            $date = $this->date;
-            $interval = $this->tasktype->schedule;
-            break;
-        default:
-            return; // unsupported type
+            case "ONCE":
+		return; // don't reschedule
+            case "INTERNAL":
+		$date = new Carbon();
+		$interval = $this->tasktype->schedule;
+		$date = $date->copy()->addDays((int)$interval);
+		break;
+            case "EXTERNAL":
+		$date = $this->date;
+		$interval = $this->tasktype->schedule;
+		$date = $date->copy()->addDays((int)$interval);
+		break;
+	    case "MONTHLY":
+		$date = $this->date;
+		$date = $date->copy()->addMonth(1);
+		break;
+	    case "YEARLY":
+		$date = $this->date;
+		$date = $date->copy()->addYear(1);
+		break;
+            default:
+		return; // unsupported type
         }
-
-        $date = $date->copy()->addDays($interval);
 
         $task = new Task;
         $task->date = $date;

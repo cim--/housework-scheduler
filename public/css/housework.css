@@ -30,5 +30,6 @@ div.row {
 
 div.col {
     padding-right: 1em;
+    margin-right: 0.5em;
     border-right: thin #999 solid;
 }
